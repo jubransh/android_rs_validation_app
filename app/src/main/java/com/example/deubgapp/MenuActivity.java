@@ -62,9 +62,6 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-
     }
 
     private void grantPermissions() {
