@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.intel.realsense.librealsense.DebugProtocol;
@@ -26,6 +27,7 @@ public class MenuActivity extends AppCompatActivity {
     private static final int PERMISSIONS_REQUEST_STORAGE_WRITE = 2;
 
     Button testModeButton, manualModeButton, upgradeButton;
+    TextView versionLabel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +36,13 @@ public class MenuActivity extends AppCompatActivity {
 
         grantPermissions();
 
-
+        versionLabel = findViewById(R.id.version_label);
         testModeButton = findViewById(R.id.test_mode_btn);
         manualModeButton = findViewById(R.id.manual_mode_btn);
         upgradeButton = findViewById(R.id.upgrade_btn);
+
+        String versionName = BuildConfig.VERSION_NAME;
+        versionLabel.setText(versionName);
 
         testModeButton.setOnClickListener(new View.OnClickListener() {
             @Override
