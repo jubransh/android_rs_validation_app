@@ -41,6 +41,7 @@ public class ProfileGenerator {
         ivcamCombinations.add("Z-640x480-30 + Y-640x480-30");
         ivcamCombinations.add("Z-640x480-30 + YUYV-640x480-30");
         ivcamCombinations.add("Z-640x480-30 + Y-640x480-30 + YUYV-640x480-30");
+        ivcamCombinations.add("Z-1024x768-30 + Y-1024x768-30 + YUYV-1280x720-30");
     }
 
     private StreamType getStreamType(String sT){
