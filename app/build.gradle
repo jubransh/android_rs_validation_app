@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
 
-def librealsenseVersion = '2.43.0'
+def librealsenseVersion = '2.48.0'
 
 android {
     compileSdkVersion 29
@@ -46,10 +46,8 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
-    implementation 'com.intel.realsense:librealsense:2.43.0@aar'
-
+    implementation 'com.intel.realsense:librealsense:2.47.0@aar'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.3.0-alpha02'
     androidTestImplementation 'androidx.test:rules:1.3.0-alpha02'
-
 }

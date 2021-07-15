@@ -90,11 +90,13 @@ public class ManualModeActivity extends AppCompatActivity {
 
         RsContext.init(getApplicationContext());
         mRsContext = new RsContext();
+
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
         getVersionsData();
 
         terminal.setOnClickListener(new View.OnClickListener() {
@@ -215,7 +217,7 @@ public class ManualModeActivity extends AppCompatActivity {
 
     private void fillSpinner(final String productName){
         final List<String> profiles = pG.getProfilesStrings(productName);
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+        final ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this, android.R.layout.simple_spinner_item, profiles);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 

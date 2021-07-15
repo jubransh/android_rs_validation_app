@@ -1,5 +1,6 @@
 package com.example.deubgapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -22,9 +23,10 @@ import com.intel.realsense.librealsense.Extension;
 
 public class MenuActivity extends AppCompatActivity {
 
-    private static final int PERMISSIONS_REQUEST_CAMERA = 0;
-    private static final int PERMISSIONS_REQUEST_STORAGE_READ = 1;
-    private static final int PERMISSIONS_REQUEST_STORAGE_WRITE = 2;
+    private static final int PERMISSIONS_ALL = 0;
+    private static final int PERMISSIONS_REQUEST_CAMERA = 1;
+    private static final int PERMISSIONS_REQUEST_STORAGE_READ = 2;
+    private static final int PERMISSIONS_REQUEST_STORAGE_WRITE = 3;
 
     Button testModeButton, manualModeButton, upgradeButton;
     TextView versionLabel;
@@ -69,22 +71,27 @@ public class MenuActivity extends AppCompatActivity {
         });
     }
 
+
     private void grantPermissions() {
         if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.O)
             return;
 
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA},
-                    PERMISSIONS_REQUEST_CAMERA);
-        }
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-                    PERMISSIONS_REQUEST_STORAGE_READ);
-        }
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                    PERMISSIONS_REQUEST_STORAGE_WRITE);
-        }
+//        if (
+//                ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED ||
+//
+//        ) {
+            ActivityCompat.requestPermissions(this, new String[]{
+                            Manifest.permission.CAMERA,
+                            Manifest.permission.READ_EXTERNAL_STORAGE,
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE
+                    },
+                    PERMISSIONS_ALL);
+//        }
+
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
 }
